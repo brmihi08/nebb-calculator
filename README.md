@@ -1,6 +1,13 @@
 # NEBB Calculator
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![React Native](https://img.shields.io/badge/React%20Native-0.72-blue.svg)](https://reactnative.dev/)
+[![Expo](https://img.shields.io/badge/Expo-49-black.svg)](https://expo.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.1-blue.svg)](https://www.typescriptlang.org/)
+
 A professional React Native application designed specifically for NEBB (National Environmental Balancing Bureau) certified technicians. This calculator provides essential tools for testing, adjusting, and balancing (TAB) of environmental systems.
+
+**🌐 Cross-Platform:** iOS • Android • Web
 
 ## Features
 
@@ -44,8 +51,8 @@ A professional React Native application designed specifically for NEBB (National
 
 1. **Clone the repository**
    ```bash
-   git clone <repository-url>
-   cd NEBB_Calc
+   git clone https://github.com/brmihi08/nebb-calculator.git
+   cd nebb-calculator
    ```
 
 2. **Install dependencies**
