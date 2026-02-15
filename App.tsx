@@ -118,8 +118,14 @@ const appleGlassTheme = {
     // Text colors
     text: '#FFFFFF',              // Pure white text
     onSurface: '#FFFFFF',
-    onSurfaceVariant: 'rgba(255, 255, 255, 0.6)',
-    placeholder: 'rgba(255, 255, 255, 0.4)',
+    onSurfaceVariant: '#CCCCCC',
+    placeholder: '#666666',
+
+    // Input field colors
+    surfaceDisabled: '#2a2a2a',
+    onSurfaceDisabled: '#666666',
+    inverseSurface: '#FFFFFF',
+    inverseOnSurface: '#000000',
 
     // Interactive elements
     onPrimary: '#FFFFFF',
@@ -127,8 +133,12 @@ const appleGlassTheme = {
     onPrimaryContainer: '#64B5F6',
 
     // Borders and dividers
-    outline: 'rgba(255, 255, 255, 0.15)',
-    outlineVariant: 'rgba(255, 255, 255, 0.08)',
+    outline: '#444444',
+    outlineVariant: '#333333',
+
+    // Disabled states
+    disabled: '#666666',
+    onDisabled: '#333333',
 
     // Status colors
     error: '#FF453A',             // Apple Red
@@ -191,8 +201,28 @@ function ThemedApp() {
     },
   };
 
+  // Override default component props for Paper components
+  const paperTheme = {
+    ...theme,
+    // Add component-specific overrides
+    components: {
+      TextInput: {
+        defaultProps: {
+          mode: 'outlined',
+          outlineColor: '#444444',
+          activeOutlineColor: '#007AFF',
+          textColor: '#FFFFFF',
+          placeholderTextColor: '#666666',
+          style: {
+            backgroundColor: '#1a1a1a',
+          },
+        },
+      },
+    },
+  };
+
   return (
-    <PaperProvider theme={theme}>
+    <PaperProvider theme={paperTheme}>
       <NavigationContainer
         theme={navigationTheme}
         onStateChange={(state) => {

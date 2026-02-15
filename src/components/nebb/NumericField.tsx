@@ -73,6 +73,20 @@ export function NumericField({
       right={right}
       onSubmitEditing={onSubmitEditing}
       returnKeyType={onSubmitEditing ? 'done' : undefined}
+      // Dark theme colors
+      style={{ backgroundColor: '#1a1a1a' }}
+      textColor="#FFFFFF"
+      placeholderTextColor="#666666"
+      outlineColor="#444444"
+      activeOutlineColor="#007AFF"
+      theme={{
+        colors: {
+          text: '#FFFFFF',
+          placeholder: '#666666',
+          background: '#1a1a1a',
+          onSurfaceVariant: '#CCCCCC',
+        }
+      }}
     />
   );
 }
