@@ -28,7 +28,12 @@
       "Bash(git config:*)",
       "Bash(gh auth status:*)",
       "Bash(git init:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nInitial commit: NEBB Calculator App\n\nA professional calculator app for NEBB \\(National Environmental Balancing Bureau\\) \ncertified technicians, featuring essential tools for Testing, Adjusting, and \nBalancing \\(TAB\\) of environmental systems.\n\nFeatures:\n- Airflow calculations \\(CFM, velocity, duct area, etc.\\)\n- Pressure calculations \\(total, static, velocity pressure\\)\n- Temperature & humidity calculations\n- Fan affinity laws\n- Hydronic calculations\n- Electrical calculations\n- Cross-platform: iOS, Android, and Web\n\nTech Stack:\n- React Native + Expo\n- TypeScript\n- React Navigation\n- React Native Paper \\(Material Design\\)\n- Metro bundler for mobile\n- Webpack for web\n\nCo-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(gh repo create:*)",
+      "Bash(git commit:*)",
+      "Bash(git push)",
+      "Bash(ls:*)"
     ]
   }
 }

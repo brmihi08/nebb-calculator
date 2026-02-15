@@ -50,9 +50,17 @@ import HeatTransferTotalHeatTransferScreen from './src/screens/tab/calculations/
 import HeatTransferSensibleHeatTransferScreen from './src/screens/tab/calculations/HeatTransferSensibleHeatTransferScreen';
 import HeatTransferLatentHeatTransferScreen from './src/screens/tab/calculations/HeatTransferLatentHeatTransferScreen';
 import HeatTransferSensibleHeatRatioScreen from './src/screens/tab/calculations/HeatTransferSensibleHeatRatioScreen';
+import HeatTransferQBtuhScreen from './src/screens/tab/calculations/HeatTransferQBtuhScreen';
 import HydronicDeltaPCoilDeltaPScreen from './src/screens/tab/calculations/HydronicDeltaPCoilDeltaPScreen';
 import HydronicDeltaPCvandGPMScreen from './src/screens/tab/calculations/HydronicDeltaPCvandGPMScreen';
+import HydronicHeatTransferCalculationsScreen from './src/screens/tab/calculations/HydronicHeatTransferCalculationsScreen';
+import HydronicBoilerOutputScreen from './src/screens/tab/calculations/HydronicBoilerOutputScreen';
+import HydronicBoilerFireRateScreen from './src/screens/tab/calculations/HydronicBoilerFireRateScreen';
+import HydronicBoilerOperatingCostScreen from './src/screens/tab/calculations/HydronicBoilerOperatingCostScreen';
 import ElectricalMotorCalculationsFanHorsepowerScreen from './src/screens/tab/calculations/ElectricalMotorCalculationsFanHorsepowerScreen';
+import ElectricalElectricalSystemsTotalResistanceScreen from './src/screens/tab/calculations/ElectricalElectricalSystemsTotalResistanceScreen';
+import ElectricalElectricalSystemsPrimarySecondaryScreen from './src/screens/tab/calculations/ElectricalElectricalSystemsPrimarySecondaryScreen';
+import ElectricalElectricalSystemsVoltageDropScreen from './src/screens/tab/calculations/ElectricalElectricalSystemsVoltageDropScreen';
 // (removed) import ToolsUnitConverterScreen from './src/screens/tab/calculations/ToolsUnitConverterScreen';
 import DuctFrictionLossScreen from './src/screens/tab/calculations/DuctFrictionLossScreen';
 import DuctFittingLossEquivalentLengthScreen from './src/screens/tab/calculations/AirflowFittingLossEquivalentLengthScreen';
@@ -60,6 +68,8 @@ import PsychrometricsDewPointEnthalpyScreen from './src/screens/tab/calculations
 import PsychrometricsMixedAirScreen from './src/screens/tab/calculations/PsychrometricsMixedAirScreen';
 import UnitConversionsScreen from './src/screens/tab/calculations/UnitConversionsScreen';
 import FilterPressureDropScreen from './src/screens/tab/calculations/FilterPressureDropScreen';
+import SheaveEquationsRPMandPDScreen from './src/screens/tab/calculations/SheaveEquationsRPMandPDScreen';
+import SheaveEquationsFanBeltLengthScreen from './src/screens/tab/calculations/SheaveEquationsFanBeltLengthScreen';
 
 // Import Cleanroom screens
 import CleanroomOverviewScreen from './src/screens/CleanroomOverviewScreen';
@@ -239,9 +249,17 @@ function TABStack() {
       <Stack.Screen name="HeatTransferSensibleHeatTransfer" component={HeatTransferSensibleHeatTransferScreen} options={{ title: 'Sensible Heat Transfer' }} />
       <Stack.Screen name="HeatTransferLatentHeatTransfer" component={HeatTransferLatentHeatTransferScreen} options={{ title: 'Latent Heat Transfer' }} />
       <Stack.Screen name="HeatTransferSensibleHeatRatio" component={HeatTransferSensibleHeatRatioScreen} options={{ title: 'Sensible Heat Ratio' }} />
+      <Stack.Screen name="HeatTransferQBtuh" component={HeatTransferQBtuhScreen} options={{ title: 'Q BTU/h' }} />
       <Stack.Screen name="HydronicDeltaPCoilDeltaP" component={HydronicDeltaPCoilDeltaPScreen} options={{ title: 'Coil Delta P' }} />
       <Stack.Screen name="HydronicDeltaPCvandGPM" component={HydronicDeltaPCvandGPMScreen} options={{ title: 'Cv and GPM' }} />
+      <Stack.Screen name="HydronicHeatTransferCalculations" component={HydronicHeatTransferCalculationsScreen} options={{ title: 'Heat Transfer Calculations' }} />
+      <Stack.Screen name="HydronicBoilerOutput" component={HydronicBoilerOutputScreen} options={{ title: 'Boiler Output' }} />
+      <Stack.Screen name="HydronicBoilerFireRate" component={HydronicBoilerFireRateScreen} options={{ title: 'Fire Rate' }} />
+      <Stack.Screen name="HydronicBoilerOperatingCost" component={HydronicBoilerOperatingCostScreen} options={{ title: 'Operating Cost' }} />
       <Stack.Screen name="ElectricalMotorCalculationsFanHorsepower" component={ElectricalMotorCalculationsFanHorsepowerScreen} options={{ title: 'Fan Horsepower' }} />
+      <Stack.Screen name="ElectricalElectricalSystemsTotalResistance" component={ElectricalElectricalSystemsTotalResistanceScreen} options={{ title: 'Total Resistance' }} />
+      <Stack.Screen name="ElectricalElectricalSystemsPrimarySecondary" component={ElectricalElectricalSystemsPrimarySecondaryScreen} options={{ title: 'Primary/Secondary' }} />
+      <Stack.Screen name="ElectricalElectricalSystemsVoltageDrop" component={ElectricalElectricalSystemsVoltageDropScreen} options={{ title: 'Voltage Drop' }} />
 
       {/* Ductwork */}
       <Stack.Screen name="DuctFrictionLoss" component={DuctFrictionLossScreen} options={{ title: 'Duct Friction Loss' }} />
@@ -250,6 +268,10 @@ function TABStack() {
       {/* Psychrometrics */}
       <Stack.Screen name="PsychrometricsDewPointEnthalpy" component={PsychrometricsDewPointEnthalpyScreen} options={{ title: 'Psychrometrics (ASHRAE)' }} />
       <Stack.Screen name="PsychrometricsMixedAir" component={PsychrometricsMixedAirScreen} options={{ title: 'Mixed Air (Psychrometrics)' }} />
+
+      {/* Sheave Equations */}
+      <Stack.Screen name="SheaveEquationsRPMandPD" component={SheaveEquationsRPMandPDScreen} options={{ title: 'RPM and PD' }} />
+      <Stack.Screen name="SheaveEquationsFanBeltLength" component={SheaveEquationsFanBeltLengthScreen} options={{ title: 'Fan Belt Length' }} />
 
       {/* Tools */}
       <Stack.Screen name="UnitConversions" component={UnitConversionsScreen} options={{ title: 'Unit Conversions' }} />
