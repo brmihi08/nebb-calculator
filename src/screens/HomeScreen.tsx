@@ -4,6 +4,8 @@ import {
   ScrollView,
   StyleSheet,
   Dimensions,
+  TouchableOpacity,
+  Platform,
 } from 'react-native';
 import {
   Card,
@@ -15,6 +17,7 @@ import {
   Text,
 } from 'react-native-paper';
 import { Ionicons } from '@expo/vector-icons';
+import { glassStyles, glassColors, spacing } from '../theme/glassStyles';
 
 const HomeScreen = ({ navigation }: any) => {
   const theme = useTheme();
@@ -97,76 +100,82 @@ const HomeScreen = ({ navigation }: any) => {
   
 
   return (
-    <ScrollView style={[styles.container, { backgroundColor: '#f0f8f0' }]}>
+    <ScrollView style={[glassStyles.container, styles.scrollView]}>
+      {/* Header with glass effect */}
       <View style={styles.headerContainer}>
-        <Surface style={styles.header}>
-          <View style={styles.headerGradient}>
-            <Title style={styles.welcomeTitle}>Unofficial NEBB Calculator</Title>
-            <Paragraph style={styles.welcomeSubtitle}>
-              Educational and reference tools for NEBB calculations
-            </Paragraph>
-            <View style={styles.disclaimerContainer}>
-              <Text style={styles.disclaimerText}>
-                ⚠️ This is an unofficial calculator for educational purposes only. 
-                Always verify calculations and consult official NEBB procedures for professional use.
-              </Text>
-            </View>
+        <View style={styles.glassHeader}>
+          <Text style={glassStyles.glassTitle}>NEBB Calculator</Text>
+          <Text style={glassStyles.glassBodySecondary}>
+            Professional TAB calculations for certified technicians
+          </Text>
+          <View style={styles.disclaimerBadge}>
+            <Ionicons name="information-circle-outline" size={16} color={glassColors.appleOrange} />
+            <Text style={styles.disclaimerText}>
+              Educational use only - Verify all calculations
+            </Text>
           </View>
-        </Surface>
+        </View>
       </View>
 
+      {/* Quick access button */}
       <View style={styles.quickActions}>
-        <Button
-          mode="contained"
-          icon="history"
+        <TouchableOpacity
+          style={styles.recentButton}
           onPress={() => navigation.navigate('RecentCalculations')}
-          style={styles.quickActionButton}
+          activeOpacity={0.7}
         >
-          Recent
-        </Button>
+          <Ionicons name="time-outline" size={20} color={glassColors.appleBlue} />
+          <Text style={styles.recentButtonText}>Recent Calculations</Text>
+          <Ionicons name="chevron-forward" size={20} color={glassColors.textSecondary} />
+        </TouchableOpacity>
       </View>
 
+      {/* Quick Calculations */}
       <View style={styles.section}>
-        <Title style={styles.sectionTitle}>⚡ Quick Calcs</Title>
-        <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.quickCalcScroll}>
+        <Text style={glassStyles.glassSubheading}>⚡ Quick Calcs</Text>
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          style={styles.quickCalcScroll}
+          contentContainerStyle={styles.quickCalcContent}
+        >
           {quickCalculations.map((calc, index) => (
-            <Card
+            <TouchableOpacity
               key={index}
-              style={[styles.quickCalcCard, { backgroundColor: calc.color }]}
+              style={styles.quickCalcCard}
               onPress={() => navigation.navigate(calc.screen, { screen: calc.subscreen })}
+              activeOpacity={0.8}
             >
-              <Card.Content style={styles.quickCalcContent}>
-                <Ionicons name={calc.icon as any} size={28} color="white" />
-                <Text style={styles.quickCalcTitle}>{calc.title}</Text>
-                <Text style={styles.quickCalcFormula}>{calc.formula}</Text>
-              </Card.Content>
-            </Card>
+              <View style={[styles.quickCalcIconContainer, { backgroundColor: calc.color }]}>
+                <Ionicons name={calc.icon as any} size={24} color="white" />
+              </View>
+              <Text style={styles.quickCalcTitle}>{calc.title}</Text>
+              <Text style={styles.quickCalcFormula}>{calc.formula}</Text>
+              <Text style={styles.quickCalcDescription}>{calc.description}</Text>
+            </TouchableOpacity>
           ))}
         </ScrollView>
       </View>
 
+      {/* Calculator Categories */}
       <View style={styles.section}>
-        <Title style={styles.sectionTitle}>Calculator Categories</Title>
+        <Text style={glassStyles.glassSubheading}>Calculator Categories</Text>
         {calculatorCategories.map((category, index) => (
-          <Card
+          <TouchableOpacity
             key={index}
-            style={[styles.card, { marginBottom: 16 }]}
+            style={styles.categoryCard}
             onPress={() => navigation.navigate(category.screen, category.subscreen ? { screen: category.subscreen } : undefined)}
+            activeOpacity={0.8}
           >
-            <Card.Content style={styles.cardContent}>
-              <View style={styles.cardHeader}>
-                <View style={[styles.iconContainer, { backgroundColor: category.color }]}>
-                  <Ionicons name={category.icon as any} size={24} color="white" />
-                </View>
-                <View style={styles.cardText}>
-                  <Title style={styles.cardTitle}>{category.title}</Title>
-                  <Paragraph style={styles.cardDescription}>
-                    {category.description}
-                  </Paragraph>
-                </View>
-              </View>
-            </Card.Content>
-          </Card>
+            <View style={[styles.categoryIcon, { backgroundColor: category.color }]}>
+              <Ionicons name={category.icon as any} size={32} color="white" />
+            </View>
+            <View style={styles.categoryContent}>
+              <Text style={styles.categoryTitle}>{category.title}</Text>
+              <Text style={styles.categoryDescription}>{category.description}</Text>
+            </View>
+            <Ionicons name="chevron-forward" size={24} color={glassColors.textTertiary} />
+          </TouchableOpacity>
         ))}
       </View>
       {/*}
@@ -243,190 +252,150 @@ const HomeScreen = ({ navigation }: any) => {
 };
 
 const styles = StyleSheet.create({
-  container: {
+  scrollView: {
     flex: 1,
-    padding: 16,
   },
+  
+  // Header
   headerContainer: {
-    marginBottom: 20,
-    overflow: 'hidden',
-    borderRadius: 24,
+    paddingHorizontal: spacing.md,
+    paddingTop: spacing.xl,
+    paddingBottom: spacing.lg,
   },
-  header: {
-    borderRadius: 24,
-    elevation: 8,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.1,
-    shadowRadius: 12,
-    backgroundColor: '#ffffff',
+  glassHeader: {
+    ...glassStyles.glassCard,
+    padding: spacing.xl,
+    alignItems: 'center',
   },
-  headerGradient: {
-    padding: 24,
-    backgroundColor: '#ffffff',
-    backdropFilter: 'blur(20px)',
-  },
-  welcomeTitle: {
-    fontSize: 28,
-    fontWeight: '700',
-    textAlign: 'center',
-    marginBottom: 8,
-    color: '#000000',
-    letterSpacing: -0.5,
-  },
-  welcomeSubtitle: {
-    textAlign: 'center',
-    fontSize: 16,
-    opacity: 0.8,
-    color: '#000000',
-    lineHeight: 22,
-    marginBottom: 16,
-  },
-  disclaimerContainer: {
-    backgroundColor: '#FFF3E0',
-    borderLeftWidth: 4,
-    borderLeftColor: '#FF6B35',
-    padding: 12,
+  disclaimerBadge: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: 'rgba(255, 159, 10, 0.15)',
     borderRadius: 8,
+    borderWidth: 1,
+    borderColor: 'rgba(255, 159, 10, 0.3)',
+    paddingHorizontal: 12,
+    paddingVertical: 8,
+    marginTop: spacing.md,
+    gap: 6,
   },
   disclaimerText: {
     fontSize: 12,
-    color: '#E65100',
-    lineHeight: 16,
-    textAlign: 'center',
+    fontWeight: '500',
+    color: glassColors.appleOrange,
   },
-  
+
+  // Quick Actions
   quickActions: {
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-    marginBottom: 16,
+    paddingHorizontal: spacing.md,
+    marginBottom: spacing.lg,
   },
-  quickActionButton: {
-    borderRadius: 12,
-  },
-  section: {
-    marginBottom: 24,
-  },
-  sectionTitle: {
-    fontSize: 20,
-    fontWeight: '600',
-    marginBottom: 16,
-    color: '#000000',
-    letterSpacing: -0.3,
-  },
-  card: {
-    borderRadius: 20,
-    elevation: 12,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 8 },
-    shadowOpacity: 0.12,
-    shadowRadius: 16,
-    backgroundColor: '#ffffff',
-    backdropFilter: 'blur(20px)',
-    borderWidth: 1,
-    borderColor: 'rgba(255, 255, 255, 0.2)',
-  },
-  cardContent: {
-    padding: 16,
-  },
-  cardHeader: {
+  recentButton: {
+    ...glassStyles.glassSurface,
     flexDirection: 'row',
     alignItems: 'center',
+    padding: spacing.md,
+    gap: 12,
   },
-  iconContainer: {
-    width: 48,
-    height: 48,
-    borderRadius: 24,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginRight: 16,
-  },
-  cardText: {
+  recentButtonText: {
     flex: 1,
-  },
-  cardTitle: {
-    fontSize: 18,
+    fontSize: 17,
     fontWeight: '600',
-    marginBottom: 4,
-    color: '#000000',
+    color: glassColors.appleBlue,
   },
-  cardDescription: {
-    fontSize: 14,
-    opacity: 0.8,
-    color: '#000000',
+
+  // Sections
+  section: {
+    paddingHorizontal: spacing.md,
+    marginBottom: spacing.xl,
   },
-  quickCalcTitle: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    marginBottom: 8,
-  },
-  formula: {
-    fontSize: 14,
-    backgroundColor: '#f0f0f0',
-    padding: 8,
-    borderRadius: 4,
-    marginBottom: 8,
-  },
-  quickCalcDescription: {
-    fontSize: 14,
-    opacity: 0.8,
-  },
+
+  // Quick Calculations
   quickCalcScroll: {
-    marginBottom: 8,
-  },
-  quickCalcCard: {
-    width: 140,
-    height: 100,
-    marginRight: 12,
-    borderRadius: 16,
-    elevation: 6,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.2,
-    shadowRadius: 8,
+    marginTop: spacing.md,
+    marginHorizontal: -spacing.md,
   },
   quickCalcContent: {
-    flex: 1,
-    justifyContent: 'center',
+    paddingHorizontal: spacing.md,
+    gap: 12,
+  },
+  quickCalcCard: {
+    ...glassStyles.glassSurface,
+    width: 160,
+    padding: spacing.md,
+    marginRight: 12,
+  },
+  quickCalcIconContainer: {
+    width: 48,
+    height: 48,
+    borderRadius: 12,
     alignItems: 'center',
-    paddingVertical: 12,
+    justifyContent: 'center',
+    marginBottom: 12,
   },
   quickCalcTitle: {
-    fontSize: 14,
-    fontWeight: '700',
-    color: 'white',
-    marginTop: 8,
-    textAlign: 'center',
+    fontSize: 17,
+    fontWeight: '600',
+    color: glassColors.textPrimary,
+    marginBottom: 4,
   },
   quickCalcFormula: {
-    fontSize: 11,
-    color: 'rgba(255,255,255,0.9)',
-    marginTop: 4,
-    fontFamily: 'monospace',
+    fontSize: 13,
+    fontWeight: '500',
+    color: glassColors.appleBlue,
+    fontFamily: Platform.select({
+      ios: 'Menlo',
+      android: 'monospace',
+      web: 'Monaco, monospace',
+    }),
+    marginBottom: 4,
   },
-  aboutText: {
-    fontSize: 14,
-    lineHeight: 20,
-    marginBottom: 12,
+  quickCalcDescription: {
+    fontSize: 12,
+    color: glassColors.textSecondary,
   },
-  disclaimerParagraph: {
-    fontSize: 14,
-    lineHeight: 20,
-    marginBottom: 12,
-    color: '#333333',
+
+  // Category Cards
+  categoryCard: {
+    ...glassStyles.glassNavCard,
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 16,
   },
+  categoryIcon: {
+    width: 56,
+    height: 56,
+    borderRadius: 14,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  categoryContent: {
+    flex: 1,
+  },
+  categoryTitle: {
+    fontSize: 17,
+    fontWeight: '600',
+    color: glassColors.textPrimary,
+    marginBottom: 4,
+  },
+  categoryDescription: {
+    fontSize: 15,
+    color: glassColors.textSecondary,
+  },
+
+  // Disclaimer sections (keep for compatibility)
   disclaimerSection: {
     marginTop: 16,
-    marginBottom: 16,
-    paddingTop: 16,
-    borderTopWidth: 1,
-    borderTopColor: '#E0E0E0',
   },
   disclaimerSubtitle: {
     fontSize: 16,
     fontWeight: '600',
     marginBottom: 8,
-    color: '#000000',
+  },
+  disclaimerParagraph: {
+    fontSize: 14,
+    lineHeight: 20,
+    marginBottom: 8,
   },
 });
 

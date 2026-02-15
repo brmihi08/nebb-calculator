@@ -102,7 +102,63 @@ import BETRegressionScreen from './src/screens/bet/calculations/BETRegressionScr
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
-// Custom theme for NEBB branding
+// Apple Glass Dark Theme - Glassmorphism Design
+const appleGlassTheme = {
+  ...PaperDarkTheme,
+  dark: true,
+  colors: {
+    ...PaperDarkTheme.colors,
+    // Core colors - Deep space blacks and blues
+    primary: '#007AFF',           // Apple Blue
+    accent: '#5E5CE6',            // Purple accent
+    background: '#000000',        // Pure black background
+    surface: 'rgba(28, 28, 30, 0.72)',  // Glass card with transparency
+    surfaceVariant: 'rgba(44, 44, 46, 0.85)', // Lighter glass
+
+    // Text colors
+    text: '#FFFFFF',              // Pure white text
+    onSurface: '#FFFFFF',
+    onSurfaceVariant: 'rgba(255, 255, 255, 0.6)',
+    placeholder: 'rgba(255, 255, 255, 0.4)',
+
+    // Interactive elements
+    onPrimary: '#FFFFFF',
+    primaryContainer: 'rgba(0, 122, 255, 0.15)',
+    onPrimaryContainer: '#64B5F6',
+
+    // Borders and dividers
+    outline: 'rgba(255, 255, 255, 0.15)',
+    outlineVariant: 'rgba(255, 255, 255, 0.08)',
+
+    // Status colors
+    error: '#FF453A',             // Apple Red
+    errorContainer: 'rgba(255, 69, 58, 0.15)',
+    success: '#30D158',           // Apple Green
+    warning: '#FF9F0A',           // Apple Orange
+
+    // Backdrop
+    backdrop: 'rgba(0, 0, 0, 0.75)',
+
+    // Elevation/Shadow colors
+    elevation: {
+      level0: 'transparent',
+      level1: 'rgba(28, 28, 30, 0.72)',
+      level2: 'rgba(44, 44, 46, 0.85)',
+      level3: 'rgba(58, 58, 60, 0.9)',
+      level4: 'rgba(72, 72, 74, 0.95)',
+      level5: 'rgba(99, 99, 102, 1)',
+    },
+  },
+  // Custom properties for glassmorphism
+  glass: {
+    blur: 40,
+    opacity: 0.72,
+    borderOpacity: 0.18,
+    shadowColor: 'rgba(0, 0, 0, 0.3)',
+  },
+};
+
+// Legacy light theme (kept for compatibility)
 const nebbTheme = {
   ...DefaultTheme,
   colors: {
@@ -116,28 +172,28 @@ const nebbTheme = {
   },
 };
 
-// Dark theme
-const nebbDarkTheme = {
-  ...PaperDarkTheme,
-  colors: {
-    ...PaperDarkTheme.colors,
-    primary: '#4FC3F7',
-    accent: '#FF6B35',
-    background: '#121212',
-    surface: '#1E1E1E',
-    text: '#FFFFFF',
-    error: '#CF6679',
-  },
-};
-
-// Theme wrapper component
+// Theme wrapper component - Always use Apple Glass Dark Theme
 function ThemedApp() {
-  const { isDarkMode } = useDarkMode();
-  const theme = isDarkMode ? nebbDarkTheme : nebbTheme;
+  // Force Apple Glass theme (dark mode always)
+  const theme = appleGlassTheme;
+
+  // Navigation theme with glassmorphism
+  const navigationTheme = {
+    dark: true,
+    colors: {
+      primary: theme.colors.primary,
+      background: theme.colors.background,
+      card: 'rgba(28, 28, 30, 0.72)',  // Glass card
+      text: theme.colors.text,
+      border: 'rgba(255, 255, 255, 0.15)',
+      notification: theme.colors.accent,
+    },
+  };
 
   return (
     <PaperProvider theme={theme}>
       <NavigationContainer
+        theme={navigationTheme}
         onStateChange={(state) => {
           const path = getActiveRoutePath(state);
           const last = path[path.length - 1];
