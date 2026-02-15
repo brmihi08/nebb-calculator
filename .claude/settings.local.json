@@ -1,0 +1,34 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx expo:*)",
+      "Bash(npm run web:*)",
+      "Bash(npm install:*)",
+      "Bash(ulimit:*)",
+      "Bash(watchman watch-del-all:*)",
+      "Bash(watchman shutdown-server:*)",
+      "Bash(npx http-server:*)",
+      "Bash(curl:*)",
+      "Bash(export EXPO_NO_METRO_LAZY=1)",
+      "Bash(export CHOKIDAR_USEPOLLING=false)",
+      "Bash(grep:*)",
+      "Bash(node:*)",
+      "Bash(EXPO_WEBPACK_USE_CACHE=false npx expo start:*)",
+      "Bash(EXPO_USE_METRO=0 npx expo start:*)",
+      "Bash(pkill:*)",
+      "Bash(WATCHMAN_BINARY=/dev/null CHOKIDAR_USEPOLLING=false NODE_ENV=production npx expo start:*)",
+      "Bash(chmod:*)",
+      "Bash(npx serve -s dist -l 3000)",
+      "Bash(npx webpack-dev-server:*)",
+      "Bash(NODE_ENV=development npx webpack serve:*)",
+      "Bash(npx webpack serve:*)",
+      "Bash(CI=true DISABLE_WATCHMAN=true npx expo start:*)",
+      "Bash(lsof:*)",
+      "Bash(xcrun simctl list:*)",
+      "Bash(git config:*)",
+      "Bash(gh auth status:*)",
+      "Bash(git init:*)",
+      "Bash(git add:*)"
+    ]
+  }
+}
