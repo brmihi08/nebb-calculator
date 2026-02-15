@@ -197,55 +197,53 @@ const HomeScreen = ({ navigation }: any) => {
       </View>
       */}
 
+      {/* About Section */}
       <View style={styles.section}>
-        <Title style={styles.sectionTitle}>About This App</Title>
-        <Card style={styles.card}>
-          <Card.Content>
-            <Paragraph style={styles.disclaimerParagraph}>
-              This app and website have been developed to assist air balancers, commissioning agents, and other professionals by providing tools, calculators, and engineering resources commonly used in the field.
-            </Paragraph>
-            <Paragraph style={styles.disclaimerParagraph}>
-              Our goal is to make it easier for industry professionals to access commonly accepted engineering equations, formulas, and reference materials that are publicly available and widely recognized within the HVAC, TAB, and commissioning industries.
-            </Paragraph>
-            
-            <View style={styles.disclaimerSection}>
-              <Title style={styles.disclaimerSubtitle}>Disclaimer of Affiliation</Title>
-              <Paragraph style={styles.disclaimerParagraph}>
-                This app/website is not affiliated with, endorsed by, or sponsored by the National Environmental Balancing Bureau (NEBB) or any other certification body.
-              </Paragraph>
-            </View>
+        <Text style={glassStyles.glassSubheading}>About This App</Text>
+        <View style={[glassStyles.glassCard, { marginTop: spacing.md }]}>
+          <Text style={glassStyles.glassBody}>
+            This app and website have been developed to assist air balancers, commissioning agents, and other professionals by providing tools, calculators, and engineering resources commonly used in the field.
+          </Text>
+          <Text style={[glassStyles.glassBody, { marginTop: spacing.md }]}>
+            Our goal is to make it easier for industry professionals to access commonly accepted engineering equations, formulas, and reference materials that are publicly available and widely recognized within the HVAC, TAB, and commissioning industries.
+          </Text>
 
-            <View style={styles.disclaimerSection}>
-              <Title style={styles.disclaimerSubtitle}>Use of Engineering Equations and Information</Title>
-              <Paragraph style={styles.disclaimerParagraph}>
-                All formulas, equations, and workflows provided within this app are derived from commonly accepted engineering principles and publicly available industry knowledge.
-              </Paragraph>
-              <Paragraph style={styles.disclaimerParagraph}>
-                • These calculations are based on general HVAC, TAB, cleanroom, and commissioning practices.
-              </Paragraph>
-              <Paragraph style={styles.disclaimerParagraph}>
-                • Any similarity between tools in this app and NEBB's published materials is purely coincidental and reflects standard practices within the field.
-              </Paragraph>
-            </View>
+          <View style={styles.disclaimerSection}>
+            <Text style={[glassStyles.glassSubheading, { fontSize: 17 }]}>Disclaimer of Affiliation</Text>
+            <Text style={glassStyles.glassBodySecondary}>
+              This app/website is not affiliated with, endorsed by, or sponsored by the National Environmental Balancing Bureau (NEBB) or any other certification body.
+            </Text>
+          </View>
 
-            <View style={styles.disclaimerSection}>
-              <Title style={styles.disclaimerSubtitle}>Limitation of Liability</Title>
-              <Paragraph style={styles.disclaimerParagraph}>
-                This app and website are provided "as-is" without any warranties or guarantees, express or implied. By using this app, you agree that:
-              </Paragraph>
-              <Paragraph style={styles.disclaimerParagraph}>
-                • You are responsible for verifying any results, calculations, or recommendations provided.
-              </Paragraph>
-              <Paragraph style={styles.disclaimerParagraph}>
-                • The app developer(s) are not liable for any direct, indirect, incidental, or consequential damages arising from the use of this tool.
-              </Paragraph>
-              <Paragraph style={styles.disclaimerParagraph}>
-                • The app is intended for supplemental reference purposes only and is not a substitute for professional judgment, standards, or project specifications.
-              </Paragraph>
-            </View>
+          <View style={styles.disclaimerSection}>
+            <Text style={[glassStyles.glassSubheading, { fontSize: 17 }]}>Use of Engineering Equations and Information</Text>
+            <Text style={glassStyles.glassBodySecondary}>
+              All formulas, equations, and workflows provided within this app are derived from commonly accepted engineering principles and publicly available industry knowledge.
+            </Text>
+            <Text style={[glassStyles.glassBodySecondary, { marginTop: spacing.sm }]}>
+              • These calculations are based on general HVAC, TAB, cleanroom, and commissioning practices.
+            </Text>
+            <Text style={glassStyles.glassBodySecondary}>
+              • Any similarity between tools in this app and NEBB's published materials is purely coincidental and reflects standard practices within the field.
+            </Text>
+          </View>
 
-          </Card.Content>
-        </Card>
+          <View style={styles.disclaimerSection}>
+            <Text style={[glassStyles.glassSubheading, { fontSize: 17 }]}>Limitation of Liability</Text>
+            <Text style={glassStyles.glassBodySecondary}>
+              This app and website are provided "as-is" without any warranties or guarantees, express or implied. By using this app, you agree that:
+            </Text>
+            <Text style={[glassStyles.glassBodySecondary, { marginTop: spacing.sm }]}>
+              • You are responsible for verifying any results, calculations, or recommendations provided.
+            </Text>
+            <Text style={glassStyles.glassBodySecondary}>
+              • The app developer(s) are not liable for any direct, indirect, incidental, or consequential damages arising from the use of this tool.
+            </Text>
+            <Text style={glassStyles.glassBodySecondary}>
+              • The app is intended for supplemental reference purposes only and is not a substitute for professional judgment, standards, or project specifications.
+            </Text>
+          </View>
+        </View>
       </View>
     </ScrollView>
   );
