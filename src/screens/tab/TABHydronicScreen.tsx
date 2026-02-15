@@ -88,7 +88,7 @@ const TABHydronicScreen = () => {
   };
 
   return (
-    <ScrollView style={[styles.container, { backgroundColor: '#f0f8f0' }]}>
+    <ScrollView style={[styles.container, { backgroundColor: theme.colors.background }]}>
       <View style={styles.headerContainer}>
         <Surface style={styles.header}>
           <View style={styles.headerGradient}>

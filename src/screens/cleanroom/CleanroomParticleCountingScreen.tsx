@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Alert, StyleSheet, View } from 'react-native';
-import { Button, Paragraph, Text, TextInput, Title } from 'react-native-paper';
+import { Button, Paragraph, Text, TextInput, Title, useTheme } from 'react-native-paper';
 import {
   CalcCard,
   CalcScreen,
@@ -14,6 +14,7 @@ import {
 const ACCENT_COLOR = '#2196F3'; // Blue for Cleanroom
 
 const CleanroomParticleCountingScreen = () => {
+  const theme = useTheme();
   const [particleCount, setParticleCount] = useState('');
   const [sampleVolume, setSampleVolume] = useState('');
   const [particleConcentration, setParticleConcentration] = useState('');
@@ -53,16 +54,20 @@ const CleanroomParticleCountingScreen = () => {
               value={particleCount}
               onChangeText={setParticleCount}
               keyboardType="numeric"
-              style={styles.input}
               mode="outlined"
+              style={[styles.input, { backgroundColor: theme.colors.surfaceVariant, color: theme.colors.onSurface }]}
+              textColor={theme.colors.onSurface}
+              placeholderTextColor={theme.colors.onSurfaceVariant}
             />
             <TextInput
               label="Sample Volume (ft³)"
               value={sampleVolume}
               onChangeText={setSampleVolume}
               keyboardType="numeric"
-              style={styles.input}
               mode="outlined"
+              style={[styles.input, { backgroundColor: theme.colors.surfaceVariant, color: theme.colors.onSurface }]}
+              textColor={theme.colors.onSurface}
+              placeholderTextColor={theme.colors.onSurfaceVariant}
             />
           </View>
           <Button
@@ -102,7 +107,6 @@ const styles = StyleSheet.create({
   input: {
     flex: 1,
     marginHorizontal: 6,
-    backgroundColor: 'rgba(255, 255, 255, 0.8)',
     borderRadius: 12,
   },
   button: {

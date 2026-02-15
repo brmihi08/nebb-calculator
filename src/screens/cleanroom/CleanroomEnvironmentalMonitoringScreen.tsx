@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
-import { Paragraph, Text, TextInput, Title } from 'react-native-paper';
+import { Paragraph, Text, TextInput, Title, useTheme } from 'react-native-paper';
 import {
   CalcCard,
   CalcScreen,
@@ -9,7 +9,17 @@ import {
 
 const ACCENT_COLOR = '#2196F3'; // Blue for Cleanroom
 
+const inputStyle = (theme: { colors: { surfaceVariant: string; onSurface: string; onSurfaceVariant: string } }) => ({
+  backgroundColor: theme.colors.surfaceVariant,
+  color: theme.colors.onSurface,
+});
+const inputColors = (theme: { colors: { onSurface: string; onSurfaceVariant: string } }) => ({
+  textColor: theme.colors.onSurface,
+  placeholderTextColor: theme.colors.onSurfaceVariant,
+});
+
 const CleanroomEnvironmentalMonitoringScreen = () => {
+  const theme = useTheme();
   const [pressureDifferential, setPressureDifferential] = useState('');
   const [temperature, setTemperature] = useState('');
   const [humidity, setHumidity] = useState('');
@@ -24,16 +34,18 @@ const CleanroomEnvironmentalMonitoringScreen = () => {
               value={pressureDifferential}
               onChangeText={setPressureDifferential}
               keyboardType="numeric"
-              style={styles.input}
               mode="outlined"
+              style={[styles.input, inputStyle(theme)]}
+              {...inputColors(theme)}
             />
             <TextInput
               label="Temperature (°F)"
               value={temperature}
               onChangeText={setTemperature}
               keyboardType="numeric"
-              style={styles.input}
               mode="outlined"
+              style={[styles.input, inputStyle(theme)]}
+              {...inputColors(theme)}
             />
           </View>
           <View style={styles.inputRow}>
@@ -42,8 +54,9 @@ const CleanroomEnvironmentalMonitoringScreen = () => {
               value={humidity}
               onChangeText={setHumidity}
               keyboardType="numeric"
-              style={styles.input}
               mode="outlined"
+              style={[styles.input, inputStyle(theme)]}
+              {...inputColors(theme)}
             />
           </View>
         </CalcCard>
@@ -61,7 +74,6 @@ const styles = StyleSheet.create({
   input: {
     flex: 1,
     marginHorizontal: 6,
-    backgroundColor: 'rgba(255, 255, 255, 0.8)',
     borderRadius: 12,
   },
 });

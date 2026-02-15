@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, ScrollView, StyleSheet, Pressable, Alert } from 'react-native';
 import { Title, Paragraph, Surface, Text } from 'react-native-paper';
+import { screenBackground } from '../../theme/screenStyles';
 import { useNavigation } from '@react-navigation/native';
 import { liquidLayout } from '../../theme/liquidLayout';
 
@@ -71,7 +72,7 @@ const BETCalculationsScreen = () => {
   };
 
   return (
-    <ScrollView style={[styles.container, { backgroundColor: '#f0f8f0' }]}>
+    <ScrollView style={[styles.container, { backgroundColor: screenBackground }]}>
       <View style={styles.headerContainer}>
         <Surface style={styles.header}>
           <View style={styles.headerGradient}>

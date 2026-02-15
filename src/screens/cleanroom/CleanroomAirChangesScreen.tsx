@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Alert, StyleSheet, View } from 'react-native';
-import { Button, Paragraph, Text, TextInput, Title } from 'react-native-paper';
+import { Button, Paragraph, Text, TextInput, Title, useTheme } from 'react-native-paper';
 import {
   CalcCard,
   CalcScreen,
@@ -14,6 +14,7 @@ import {
 const ACCENT_COLOR = '#2196F3'; // Blue for Cleanroom
 
 const CleanroomAirChangesScreen = () => {
+  const theme = useTheme();
   const [roomVolume, setRoomVolume] = useState('');
   const [airChanges, setAirChanges] = useState('');
   const [cfmRequired, setCfmRequired] = useState('');
@@ -49,16 +50,20 @@ const CleanroomAirChangesScreen = () => {
               value={roomVolume}
               onChangeText={setRoomVolume}
               keyboardType="numeric"
-              style={styles.input}
               mode="outlined"
+              style={[styles.input, { backgroundColor: theme.colors.surfaceVariant, color: theme.colors.onSurface }]}
+              textColor={theme.colors.onSurface}
+              placeholderTextColor={theme.colors.onSurfaceVariant}
             />
             <TextInput
               label="Air Changes/Hour"
               value={airChanges}
               onChangeText={setAirChanges}
               keyboardType="numeric"
-              style={styles.input}
               mode="outlined"
+              style={[styles.input, { backgroundColor: theme.colors.surfaceVariant, color: theme.colors.onSurface }]}
+              textColor={theme.colors.onSurface}
+              placeholderTextColor={theme.colors.onSurfaceVariant}
             />
           </View>
           <Button
@@ -98,7 +103,6 @@ const styles = StyleSheet.create({
   input: {
     flex: 1,
     marginHorizontal: 6,
-    backgroundColor: 'rgba(255, 255, 255, 0.8)',
     borderRadius: 12,
   },
   button: {

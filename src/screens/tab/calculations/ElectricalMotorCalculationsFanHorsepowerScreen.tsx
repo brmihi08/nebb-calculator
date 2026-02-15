@@ -14,6 +14,7 @@ import {
   Surface,
   Text,
 } from 'react-native-paper';
+import { screenBackground } from '../../../theme/screenStyles';
 
 const ElectricalMotorCalculationsFanHorsepowerScreen = () => {
   const theme = useTheme();
@@ -140,7 +141,7 @@ const ElectricalMotorCalculationsFanHorsepowerScreen = () => {
   };
 
   return (
-    <ScrollView style={[styles.container, { backgroundColor: '#f0f8f0' }]}>
+    <ScrollView style={[styles.container, { backgroundColor: screenBackground }]}>
       <View style={styles.headerContainer}>
         <Surface style={styles.header}>
           <View style={styles.headerGradient}>

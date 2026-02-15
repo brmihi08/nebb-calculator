@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Alert, StyleSheet, View } from 'react-native';
-import { Button, Paragraph, Text, TextInput, Title } from 'react-native-paper';
+import { Button, Paragraph, Text, TextInput, Title, useTheme } from 'react-native-paper';
 import {
   CalcCard,
   CalcScreen,
@@ -14,6 +14,9 @@ import {
 const ACCENT = '#8b5cf6';
 
 const CleanroomScanRateScreen = () => {
+  const theme = useTheme();
+  const inputStyle = [styles.input, { backgroundColor: theme.colors.surfaceVariant, color: theme.colors.onSurface }];
+  const inputColors = { textColor: theme.colors.onSurface, placeholderTextColor: theme.colors.onSurfaceVariant };
   // Scan Rate Calculations
   const [scanRate, setScanRate] = useState('');
   const [sampleVolume, setSampleVolume] = useState('');
@@ -228,7 +231,7 @@ const CleanroomScanRateScreen = () => {
               value={scanRate}
               onChangeText={setScanRate}
               keyboardType="numeric"
-              style={[styles.input, styles.inputHalf]}
+              style={[inputStyle, styles.inputHalf]} {...inputColors}
               mode="outlined"
             />
             <TextInput
@@ -236,7 +239,7 @@ const CleanroomScanRateScreen = () => {
               value={sampleVolume}
               onChangeText={setSampleVolume}
               keyboardType="numeric"
-              style={[styles.input, styles.inputHalf]}
+              style={[inputStyle, styles.inputHalf]} {...inputColors}
               mode="outlined"
             />
           </View>
@@ -247,7 +250,7 @@ const CleanroomScanRateScreen = () => {
               value={scanTime}
               onChangeText={setScanTime}
               keyboardType="numeric"
-              style={styles.input}
+              style={inputStyle} {...inputColors}
               mode="outlined"
             />
           </View>
@@ -276,7 +279,7 @@ const CleanroomScanRateScreen = () => {
               value={flowRate}
               onChangeText={setFlowRate}
               keyboardType="numeric"
-              style={[styles.input, styles.inputHalf]}
+              style={[inputStyle, styles.inputHalf]} {...inputColors}
               mode="outlined"
             />
             <TextInput
@@ -284,7 +287,7 @@ const CleanroomScanRateScreen = () => {
               value={totalVolume}
               onChangeText={setTotalVolume}
               keyboardType="numeric"
-              style={[styles.input, styles.inputHalf]}
+              style={[inputStyle, styles.inputHalf]} {...inputColors}
               mode="outlined"
             />
           </View>
@@ -295,7 +298,7 @@ const CleanroomScanRateScreen = () => {
               value={flowTime}
               onChangeText={setFlowTime}
               keyboardType="numeric"
-              style={styles.input}
+              style={inputStyle} {...inputColors}
               mode="outlined"
             />
           </View>
@@ -324,7 +327,7 @@ const CleanroomScanRateScreen = () => {
               value={samplingTime}
               onChangeText={setSamplingTime}
               keyboardType="numeric"
-              style={[styles.input, styles.inputHalf]}
+              style={[inputStyle, styles.inputHalf]} {...inputColors}
               mode="outlined"
             />
             <TextInput
@@ -332,7 +335,7 @@ const CleanroomScanRateScreen = () => {
               value={requiredVolume}
               onChangeText={setRequiredVolume}
               keyboardType="numeric"
-              style={[styles.input, styles.inputHalf]}
+              style={[inputStyle, styles.inputHalf]} {...inputColors}
               mode="outlined"
             />
           </View>
@@ -343,7 +346,7 @@ const CleanroomScanRateScreen = () => {
               value={samplingFlowRate}
               onChangeText={setSamplingFlowRate}
               keyboardType="numeric"
-              style={styles.input}
+              style={inputStyle} {...inputColors}
               mode="outlined"
             />
           </View>
@@ -372,7 +375,7 @@ const CleanroomScanRateScreen = () => {
               value={particleCount}
               onChangeText={setParticleCount}
               keyboardType="numeric"
-              style={[styles.input, styles.inputHalf]}
+              style={[inputStyle, styles.inputHalf]} {...inputColors}
               mode="outlined"
             />
             <TextInput
@@ -380,7 +383,7 @@ const CleanroomScanRateScreen = () => {
               value={sampleVolume}
               onChangeText={setSampleVolume}
               keyboardType="numeric"
-              style={[styles.input, styles.inputHalf]}
+              style={[inputStyle, styles.inputHalf]} {...inputColors}
               mode="outlined"
             />
           </View>
@@ -445,7 +448,6 @@ const styles = StyleSheet.create({
   input: {
     flex: 1,
     marginHorizontal: 4,
-    backgroundColor: 'rgba(255, 255, 255, 0.8)',
   },
   inputHalf: {
     flex: 1,

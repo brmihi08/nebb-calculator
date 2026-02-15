@@ -15,6 +15,7 @@ import {
 } from 'react-native-paper';
 import { CopyableValueRow, NumericField } from '../../../components/nebb';
 import { formatNumber } from '../../../utils/format';
+import { screenBackground } from '../../../theme/screenStyles';
 
 const AirflowVolumetricFlowRateScreen = () => {
   const [velocity, setVelocity] = useState('');
@@ -76,7 +77,7 @@ const AirflowVolumetricFlowRateScreen = () => {
   };
 
   return (
-    <ScrollView style={[styles.container, { backgroundColor: '#f0f8f0' }]}>
+    <ScrollView style={[styles.container, { backgroundColor: screenBackground }]}>
       <View style={styles.headerContainer}>
         <Surface style={styles.header}>
           <View style={styles.headerGradient}>

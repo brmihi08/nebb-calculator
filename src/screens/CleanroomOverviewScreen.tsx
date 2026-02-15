@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import { Title, Paragraph } from 'react-native-paper';
+import { Title, Paragraph, useTheme } from 'react-native-paper';
 import { Ionicons } from '@expo/vector-icons';
 import {
   CalcCard,
@@ -11,7 +11,7 @@ import {
 const ACCENT_COLOR = '#2196F3'; // Blue for Cleanroom
 
 const CleanroomOverviewScreen = ({ navigation }: any) => {
-
+  const theme = useTheme();
   const cleanroomCategories = [
     {
       title: 'Air Changes Calculator',
@@ -51,11 +51,11 @@ const CleanroomOverviewScreen = ({ navigation }: any) => {
       subtitle="Overview and tools for NEBB cleanroom calculations and standards"
     >
       <CalcSection>
-        <Title style={styles.sectionTitle}>Cleanroom Tools</Title>
+        <Title style={[styles.sectionTitle, { color: theme.colors.onSurface }]}>Cleanroom Tools</Title>
         {cleanroomCategories.map((category, index) => (
           <CalcCard
             key={index}
-            style={[styles.card, { marginBottom: 16 }]} 
+            style={[styles.card, { marginBottom: 16, backgroundColor: theme.colors.surface, borderColor: theme.colors.outline }]} 
             onPress={() => navigation.navigate(category.screen)}
           >
             <View style={styles.cardHeader}>
@@ -63,8 +63,8 @@ const CleanroomOverviewScreen = ({ navigation }: any) => {
                 <Ionicons name={category.icon as any} size={24} color="white" />
               </View>
               <View style={styles.cardText}>
-                <Title style={styles.cardTitle}>{category.title}</Title>
-                <Paragraph style={styles.cardDescription}>
+                <Title style={[styles.cardTitle, { color: theme.colors.onSurface }]}>{category.title}</Title>
+                <Paragraph style={[styles.cardDescription, { color: theme.colors.onSurfaceVariant }]}>
                   {category.description}
                 </Paragraph>
               </View>
@@ -81,7 +81,6 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: '600',
     marginBottom: 16,
-    color: '#000000',
     letterSpacing: -0.3,
   },
   card: {
@@ -91,10 +90,7 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 8 },
     shadowOpacity: 0.12,
     shadowRadius: 16,
-    backgroundColor: '#ffffff',
-    backdropFilter: 'blur(20px)',
     borderWidth: 1,
-    borderColor: 'rgba(255, 255, 255, 0.2)',
   },
   cardHeader: {
     flexDirection: 'row',
@@ -115,12 +111,10 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: '600',
     marginBottom: 4,
-    color: '#000000',
   },
   cardDescription: {
     fontSize: 14,
     opacity: 0.8,
-    color: '#000000',
   },
 });
 

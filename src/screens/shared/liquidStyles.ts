@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-export const LIQUID_BACKGROUND = '#f0f8f0';
+export const LIQUID_BACKGROUND = '#000000';
 
 /**
  * TAB-like "liquid" layout styles used across modules.

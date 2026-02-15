@@ -2,8 +2,8 @@
 // The theme includes green and white color scheme with black text
 
 export const applyNEBBTheme = {
-  // Background color for all screens
-  backgroundColor: '#f0f8f0',
+  // Background color for all screens (dark theme)
+  backgroundColor: '#000000',
   
   // Header styles
   header: {

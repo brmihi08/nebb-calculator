@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Alert, ScrollView, StyleSheet, View } from 'react-native';
 import { Button, Paragraph, Surface, Text, TextInput, Title } from 'react-native-paper';
+import { screenBackground } from '../../../theme/screenStyles';
 
 const AirflowHoodFaceVelocityScreen = () => {
   const [cfm, setCfm] = useState('');
@@ -74,7 +75,7 @@ const AirflowHoodFaceVelocityScreen = () => {
   };
 
   return (
-    <ScrollView style={[styles.container, { backgroundColor: '#f0f8f0' }]}>
+    <ScrollView style={[styles.container, { backgroundColor: screenBackground }]}>
       <View style={styles.headerContainer}>
         <Surface style={styles.header}>
           <View style={styles.headerGradient}>

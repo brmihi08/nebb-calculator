@@ -11,7 +11,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 
 // Import main screens
-import HomeScreen from './src/screens/HomeScreenSimple';
+import HomeScreen from './src/screens/HomeScreen';
 import RecentCalculationsScreen from './src/screens/RecentCalculationsScreen';
 
 // Import TAB screens
@@ -111,9 +111,9 @@ const appleGlassTheme = {
     // Core colors - Deep space blacks and blues
     primary: '#007AFF',           // Apple Blue
     accent: '#5E5CE6',            // Purple accent
-    background: '#0a0a0a',        // Dark gray background
-    surface: '#1a1a1a',  // Solid dark surface
-    surfaceVariant: '#252525', // Lighter surface
+    background: '#000000',        // Pure black background
+    surface: 'rgba(28, 28, 30, 0.72)',  // Glass card with transparency
+    surfaceVariant: 'rgba(44, 44, 46, 0.85)', // Lighter glass
 
     // Text colors
     text: '#FFFFFF',              // Pure white text
@@ -139,14 +139,14 @@ const appleGlassTheme = {
     // Backdrop
     backdrop: 'rgba(0, 0, 0, 0.75)',
 
-    // Elevation/Shadow colors - solid for better visibility
+    // Elevation/Shadow colors
     elevation: {
       level0: 'transparent',
-      level1: '#1a1a1a',
-      level2: '#252525',
-      level3: '#2a2a2a',
-      level4: '#303030',
-      level5: '#3a3a3a',
+      level1: 'rgba(28, 28, 30, 0.72)',
+      level2: 'rgba(44, 44, 46, 0.85)',
+      level3: 'rgba(58, 58, 60, 0.9)',
+      level4: 'rgba(72, 72, 74, 0.95)',
+      level5: 'rgba(99, 99, 102, 1)',
     },
   },
   // Custom properties for glassmorphism

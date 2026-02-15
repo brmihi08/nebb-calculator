@@ -1,11 +1,12 @@
 import React from 'react';
 import { View, ScrollView, StyleSheet, Pressable } from 'react-native';
-import { Title, Paragraph, Surface, Text } from 'react-native-paper';
+import { Title, Paragraph, Surface, Text, useTheme } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
 import { baseScreenStyles } from '../../theme/screenStyles';
 
 const TABOverviewScreen = () => {
   const navigation = useNavigation();
+  const theme = useTheme();
 
   const tabCategories = [
     {
@@ -101,7 +102,7 @@ const TABOverviewScreen = () => {
   };
 
   return (
-    <ScrollView style={[baseScreenStyles.container, { backgroundColor: '#f0f8f0' }]}>
+    <ScrollView style={baseScreenStyles.container}>
       <View style={baseScreenStyles.headerContainer}>
         <Surface style={baseScreenStyles.header}>
           <View style={baseScreenStyles.headerGradient}>
@@ -124,17 +125,17 @@ const TABOverviewScreen = () => {
                   <Text style={styles.categoryIcon}>{category.icon}</Text>
                   <View style={styles.cardTitleContainer}>
                     <Title style={[styles.cardTitle, { color: category.color }]}>{category.title}</Title>
-                    <Paragraph style={styles.cardDescription}>{category.description}</Paragraph>
+                    <Paragraph style={[styles.cardDescription, { color: theme.colors.onSurfaceVariant }]}>{category.description}</Paragraph>
                   </View>
                 </View>
 
                 <View style={styles.subcategoriesContainer}>
                   {category.subcategories.map((subcategory: any, subIndex: number) => (
                     <View key={subIndex} style={styles.subcategory}>
-                      <Text style={styles.subcategoryTitle}>{subcategory.title}</Text>
+                      <Text style={[styles.subcategoryTitle, { color: theme.colors.onSurface }]}>{subcategory.title}</Text>
                       <View style={styles.itemsList}>
                         {subcategory.items.map((item: string, itemIndex: number) => (
-                          <Text key={itemIndex} style={styles.itemText}>
+                          <Text key={itemIndex} style={[styles.itemText, { color: theme.colors.onSurfaceVariant }]}>
                             • {item}
                           </Text>
                         ))}
@@ -143,7 +144,7 @@ const TABOverviewScreen = () => {
                   ))}
                 </View>
 
-                <View style={styles.navigationButton}>
+                <View style={[styles.navigationButton, { borderTopColor: theme.colors.outline }]}>
                   <Text style={[styles.navigationText, { color: category.color }]}>View {category.title} Calculations →</Text>
                 </View>
               </View>
@@ -175,7 +176,6 @@ const styles = StyleSheet.create({
   },
   cardDescription: {
     fontSize: 14,
-    color: '#000000',
     opacity: 0.7,
   },
   subcategoriesContainer: {
@@ -187,7 +187,6 @@ const styles = StyleSheet.create({
   subcategoryTitle: {
     fontSize: 16,
     fontWeight: '600',
-    color: '#000000',
     marginBottom: 6,
   },
   itemsList: {
@@ -195,7 +194,6 @@ const styles = StyleSheet.create({
   },
   itemText: {
     fontSize: 14,
-    color: '#000000',
     opacity: 0.8,
     marginBottom: 2,
   },
@@ -203,7 +201,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingTop: 12,
     borderTopWidth: 1,
-    borderTopColor: 'rgba(0, 0, 0, 0.1)',
   },
   navigationText: {
     fontSize: 16,

@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
 import { View, ScrollView, Alert } from 'react-native';
-import { Title, Paragraph, TextInput, Button, Surface, Text } from 'react-native-paper';
+import { Title, Paragraph, TextInput, Button, Surface, Text, useTheme } from 'react-native-paper';
 import { parseNumber, requirePositive, requireNonNegative, round } from '../../../utils/cleanroom';
 import { makeCalculatorStyles } from '../../../theme/screenStyles';
 
 const styles = makeCalculatorStyles('#3b82f6');
 
 const CleanroomParticleConcentrationScreen = () => {
+  const theme = useTheme();
   const [particleCount, setParticleCount] = useState('');
   const [sampleVolume, setSampleVolume] = useState('');
   const [particleConcentration, setParticleConcentration] = useState('');
+  const inputColors = { textColor: theme.colors.onSurface, placeholderTextColor: theme.colors.onSurfaceVariant };
 
   const calculateMissingValue = () => {
     const values = [particleCount, sampleVolume, particleConcentration];
@@ -79,7 +81,7 @@ const CleanroomParticleConcentrationScreen = () => {
   };
 
   return (
-    <ScrollView style={[styles.container, { backgroundColor: '#f0f8f0' }]}>
+    <ScrollView style={[styles.container, { backgroundColor: screenBackground }]}>
       <View style={styles.headerContainer}>
         <Surface style={styles.header}>
           <View style={styles.headerGradient}>
@@ -106,8 +108,9 @@ const CleanroomParticleConcentrationScreen = () => {
                 value={particleCount}
                 onChangeText={setParticleCount}
                 keyboardType="numeric"
-                style={styles.input}
+                style={[styles.input, { backgroundColor: theme.colors.surfaceVariant }]}
                 mode="outlined"
+                {...inputColors}
               />
             </View>
 
@@ -117,8 +120,9 @@ const CleanroomParticleConcentrationScreen = () => {
                 value={sampleVolume}
                 onChangeText={setSampleVolume}
                 keyboardType="numeric"
-                style={styles.input}
+                style={[styles.input, { backgroundColor: theme.colors.surfaceVariant }]}
                 mode="outlined"
+                {...inputColors}
               />
             </View>
 
@@ -128,8 +132,9 @@ const CleanroomParticleConcentrationScreen = () => {
                 value={particleConcentration}
                 onChangeText={setParticleConcentration}
                 keyboardType="numeric"
-                style={styles.input}
+                style={[styles.input, { backgroundColor: theme.colors.surfaceVariant }]}
                 mode="outlined"
+                {...inputColors}
               />
             </View>
 

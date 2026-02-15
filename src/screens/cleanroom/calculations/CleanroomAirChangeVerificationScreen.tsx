@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import { Alert, StyleSheet, View } from 'react-native';
-import { Button, Text, TextInput } from 'react-native-paper';
+import { Button, Text, TextInput, useTheme } from 'react-native-paper';
+import { screenBackground } from '../../../theme/screenStyles';
 import {
   CalcCard,
   CalcScreen,
@@ -22,6 +23,9 @@ import {
 const ACCENT = '#10b981';
 
 const CleanroomAirChangeVerificationScreen = () => {
+  const theme = useTheme();
+  const inputStyle = [styles.input, { backgroundColor: theme.colors.surfaceVariant, color: theme.colors.onSurface }];
+  const inputColors = { textColor: theme.colors.onSurface, placeholderTextColor: theme.colors.onSurfaceVariant };
   const [roomVolume, setRoomVolume] = useState('');
   const [targetAch, setTargetAch] = useState('');
   const [measuredSupplyCfm, setMeasuredSupplyCfm] = useState('');
@@ -149,47 +153,19 @@ const CleanroomAirChangeVerificationScreen = () => {
           </FormulaBlock>
 
           <View style={styles.inputRow}>
-            <TextInput
-              label="Room Volume (ft³)"
-              value={roomVolume}
-              onChangeText={setRoomVolume}
-              keyboardType="numeric"
-              style={styles.input}
-              mode="outlined"
-            />
+            <TextInput label="Room Volume (ft³)" value={roomVolume} onChangeText={setRoomVolume} keyboardType="numeric" mode="outlined" style={inputStyle} {...inputColors} />
           </View>
 
           <View style={styles.inputRow}>
-            <TextInput
-              label="Target ACH (optional)"
-              value={targetAch}
-              onChangeText={setTargetAch}
-              keyboardType="numeric"
-              style={styles.input}
-              mode="outlined"
-            />
+            <TextInput label="Target ACH (optional)" value={targetAch} onChangeText={setTargetAch} keyboardType="numeric" mode="outlined" style={inputStyle} {...inputColors} />
           </View>
 
           <View style={styles.inputRow}>
-            <TextInput
-              label="Measured Supply (CFM)"
-              value={measuredSupplyCfm}
-              onChangeText={setMeasuredSupplyCfm}
-              keyboardType="numeric"
-              style={styles.input}
-              mode="outlined"
-            />
+            <TextInput label="Measured Supply (CFM)" value={measuredSupplyCfm} onChangeText={setMeasuredSupplyCfm} keyboardType="numeric" mode="outlined" style={inputStyle} {...inputColors} />
           </View>
 
           <View style={styles.inputRow}>
-            <TextInput
-              label="Measured Exhaust/Return (CFM)"
-              value={measuredExhaustCfm}
-              onChangeText={setMeasuredExhaustCfm}
-              keyboardType="numeric"
-              style={styles.input}
-              mode="outlined"
-            />
+            <TextInput label="Measured Exhaust/Return (CFM)" value={measuredExhaustCfm} onChangeText={setMeasuredExhaustCfm} keyboardType="numeric" mode="outlined" style={inputStyle} {...inputColors} />
           </View>
 
           <View style={styles.buttonContainer}>
@@ -250,9 +226,7 @@ const styles = StyleSheet.create({
   inputRow: {
     marginBottom: 16,
   },
-  input: {
-    backgroundColor: 'rgba(255, 255, 255, 0.8)',
-  },
+  input: {},
   buttonContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',

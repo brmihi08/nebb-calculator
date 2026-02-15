@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import { Alert, ScrollView, StyleSheet, View } from 'react-native';
 import { Button, Paragraph, Surface, Text, TextInput, Title } from 'react-native-paper';
+import { screenBackground } from '../../../theme/screenStyles';
 
 import { calcDuctFrictionLoss, calcEquivalentLengthM, calcFittingLossPa } from '../../../lib/calcs/duct';
 import { paToInWg } from '../../../lib/calcs/conversions';
@@ -85,7 +86,7 @@ const AirflowFittingLossEquivalentLengthScreen = () => {
   };
 
   return (
-    <ScrollView style={[styles.container, { backgroundColor: '#f0f8f0' }]}>
+    <ScrollView style={[styles.container, { backgroundColor: screenBackground }]}>
       <View style={styles.headerContainer}>
         <Surface style={styles.header}>
           <View style={styles.headerGradient}>

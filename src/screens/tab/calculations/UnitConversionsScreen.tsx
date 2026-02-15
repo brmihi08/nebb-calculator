@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Alert, StyleSheet, View } from 'react-native';
 import { Button, Snackbar, Text } from 'react-native-paper';
+import { screenBackground } from '../../../theme/screenStyles';
 
 import {
   CalcCard,

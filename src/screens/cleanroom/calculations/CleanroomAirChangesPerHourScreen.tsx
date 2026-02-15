@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Alert, StyleSheet, View } from 'react-native';
-import { Button, Text, TextInput } from 'react-native-paper';
+import { Button, Text, TextInput, useTheme } from 'react-native-paper';
+import { screenBackground } from '../../../theme/screenStyles';
 import {
   CalcCard,
   CalcScreen,
@@ -22,9 +23,12 @@ import {
 const ACCENT = '#22c55e';
 
 const CleanroomAirChangesPerHourScreen = () => {
+  const theme = useTheme();
   const [roomVolume, setRoomVolume] = useState('');
   const [airChanges, setAirChanges] = useState('');
   const [cfmRequired, setCfmRequired] = useState('');
+  const inputStyle = [styles.input, { backgroundColor: theme.colors.surfaceVariant, color: theme.colors.onSurface }];
+  const inputColors = { textColor: theme.colors.onSurface, placeholderTextColor: theme.colors.onSurfaceVariant };
 
   const calculateMissingValue = () => {
     const values = [roomVolume, airChanges, cfmRequired];
@@ -115,8 +119,9 @@ const CleanroomAirChangesPerHourScreen = () => {
               value={roomVolume}
               onChangeText={setRoomVolume}
               keyboardType="numeric"
-              style={styles.input}
               mode="outlined"
+              style={inputStyle}
+              {...inputColors}
             />
           </View>
 
@@ -126,8 +131,9 @@ const CleanroomAirChangesPerHourScreen = () => {
               value={airChanges}
               onChangeText={setAirChanges}
               keyboardType="numeric"
-              style={styles.input}
               mode="outlined"
+              style={inputStyle}
+              {...inputColors}
             />
           </View>
 
@@ -137,8 +143,9 @@ const CleanroomAirChangesPerHourScreen = () => {
               value={cfmRequired}
               onChangeText={setCfmRequired}
               keyboardType="numeric"
-              style={styles.input}
               mode="outlined"
+              style={inputStyle}
+              {...inputColors}
             />
           </View>
 
@@ -179,7 +186,9 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   input: {
-    backgroundColor: 'rgba(255, 255, 255, 0.8)',
+    flex: 1,
+    marginHorizontal: 6,
+    borderRadius: 12,
   },
   buttonContainer: {
     flexDirection: 'row',

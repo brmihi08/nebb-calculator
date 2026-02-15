@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import { Title, Paragraph } from 'react-native-paper';
+import { Title, Paragraph, useTheme } from 'react-native-paper';
 import { Ionicons } from '@expo/vector-icons';
 import {
   CalcCard,
@@ -11,7 +11,7 @@ import {
 const ACCENT_COLOR = '#FF9800'; // Orange for BET
 
 const BETOverviewScreen = ({ navigation }: any) => {
-
+  const theme = useTheme();
   const betCategories = [
     {
       title: 'Air Changes Calculator',
@@ -78,11 +78,11 @@ const BETOverviewScreen = ({ navigation }: any) => {
       subtitle="Blower door, infiltration, and air tightness per ASTM & NEBB standards"
     >
       <CalcSection>
-        <Title style={styles.sectionTitle}>BET Calculators</Title>
+        <Title style={[styles.sectionTitle, { color: theme.colors.onSurface }]}>BET Calculators</Title>
         {betCategories.map((category, index) => (
           <CalcCard
             key={index}
-            style={[styles.card, { marginBottom: 16 }]}
+            style={[styles.card, { marginBottom: 16, backgroundColor: theme.colors.surface, borderColor: theme.colors.outline }]}
             onPress={() => navigation.navigate(category.screen)}
           >
             <View style={styles.cardHeader}>
@@ -90,8 +90,8 @@ const BETOverviewScreen = ({ navigation }: any) => {
                 <Ionicons name={category.icon as any} size={24} color="white" />
               </View>
               <View style={styles.cardText}>
-                <Title style={styles.cardTitle}>{category.title}</Title>
-                <Paragraph style={styles.cardDescription}>
+                <Title style={[styles.cardTitle, { color: theme.colors.onSurface }]}>{category.title}</Title>
+                <Paragraph style={[styles.cardDescription, { color: theme.colors.onSurfaceVariant }]}>
                   {category.description}
                 </Paragraph>
               </View>
@@ -101,11 +101,11 @@ const BETOverviewScreen = ({ navigation }: any) => {
       </CalcSection>
 
       <CalcSection>
-        <Title style={styles.sectionTitle}>Standards & References</Title>
+        <Title style={[styles.sectionTitle, { color: theme.colors.onSurface }]}>Standards & References</Title>
         {standards.map((standard, index) => (
           <CalcCard
             key={index}
-            style={[styles.card, { marginBottom: 16 }]}
+            style={[styles.card, { marginBottom: 16, backgroundColor: theme.colors.surface, borderColor: theme.colors.outline }]}
             onPress={() => navigation.navigate(standard.screen)}
           >
             <View style={styles.cardHeader}>
@@ -113,8 +113,8 @@ const BETOverviewScreen = ({ navigation }: any) => {
                 <Ionicons name={standard.icon as any} size={24} color="white" />
               </View>
               <View style={styles.cardText}>
-                <Title style={styles.cardTitle}>{standard.title}</Title>
-                <Paragraph style={styles.cardDescription}>
+                <Title style={[styles.cardTitle, { color: theme.colors.onSurface }]}>{standard.title}</Title>
+                <Paragraph style={[styles.cardDescription, { color: theme.colors.onSurfaceVariant }]}>
                   {standard.description}
                 </Paragraph>
               </View>
@@ -131,7 +131,6 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: '600',
     marginBottom: 16,
-    color: '#000000',
     letterSpacing: -0.3,
   },
   card: {
@@ -141,10 +140,7 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 8 },
     shadowOpacity: 0.12,
     shadowRadius: 16,
-    backgroundColor: '#ffffff',
-    backdropFilter: 'blur(20px)',
     borderWidth: 1,
-    borderColor: 'rgba(255, 255, 255, 0.2)',
   },
   cardHeader: {
     flexDirection: 'row',
@@ -165,12 +161,10 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: '600',
     marginBottom: 4,
-    color: '#000000',
   },
   cardDescription: {
     fontSize: 14,
     opacity: 0.8,
-    color: '#000000',
   },
 });
 

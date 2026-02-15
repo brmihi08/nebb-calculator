@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import { View, ScrollView, StyleSheet, Alert } from 'react-native';
 import { Title, Paragraph, TextInput, Button, Surface, Text } from 'react-native-paper';
+import { screenBackground } from '../../../theme/screenStyles';
 import {
   liquidLayout,
   liquidCalcLayout,
@@ -77,7 +78,7 @@ const BETRegressionScreen = () => {
   const accent = makeCalcAccentStyles(ACCENT);
 
   return (
-    <ScrollView style={[styles.container, { backgroundColor: '#f0f8f0' }]}>
+    <ScrollView style={[styles.container, { backgroundColor: screenBackground }]}>
       <View style={styles.headerContainer}>
         <Surface style={styles.header}>
           <View style={styles.headerGradient}>

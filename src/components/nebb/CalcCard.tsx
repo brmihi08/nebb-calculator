@@ -1,6 +1,6 @@
 import React from 'react';
 import { Pressable, StyleSheet, View, ViewStyle } from 'react-native';
-import { Surface } from 'react-native-paper';
+import { Surface, useTheme } from 'react-native-paper';
 
 type CalcCardProps = {
   children: React.ReactNode;
@@ -10,11 +10,9 @@ type CalcCardProps = {
 
 const styles = StyleSheet.create({
   liquidCard: {
-    backgroundColor: 'rgba(255, 255, 255, 0.95)',
     borderRadius: 20,
     elevation: 4,
     borderWidth: 1,
-    borderColor: 'rgba(255, 255, 255, 0.2)',
   },
   pressable: {
     borderRadius: 20,
@@ -27,8 +25,9 @@ const styles = StyleSheet.create({
 export const calcCardStyles = styles;
 
 export function CalcCard({ children, onPress, style }: CalcCardProps) {
+  const theme = useTheme();
   const cardContent = (
-    <Surface style={[styles.liquidCard, style]}>
+    <Surface style={[styles.liquidCard, { backgroundColor: theme.colors.surface, borderColor: theme.colors.outline }, style]}>
       <View style={styles.cardContent}>{children}</View>
     </Surface>
   );

@@ -1,7 +1,7 @@
 export const NEBBTheme = {
   colors: {
-    // Background colors
-    background: '#f0f8f0',
+    // Background colors (dark theme)
+    background: '#000000',
     cardBackground: 'rgba(255, 255, 255, 0.95)',
     headerBackground: 'rgba(255, 255, 255, 0.9)',
     inputBackground: 'rgba(255, 255, 255, 0.8)',

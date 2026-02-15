@@ -1,6 +1,6 @@
 import React from 'react';
 import { ScrollView, StyleSheet, View, ViewStyle } from 'react-native';
-import { Paragraph, Surface, Title } from 'react-native-paper';
+import { Paragraph, Surface, Title, useTheme } from 'react-native-paper';
 
 type CalcScreenProps = {
   title: string;
@@ -14,12 +14,14 @@ export function CalcScreen({
   title,
   subtitle,
   children,
-  backgroundColor = '#f0f8f0',
+  backgroundColor,
   contentContainerStyle,
 }: CalcScreenProps) {
+  const theme = useTheme();
+  const bg = backgroundColor ?? theme.colors.background;
   return (
     <ScrollView
-      style={[styles.container, { backgroundColor }]}
+      style={[styles.container, { backgroundColor: bg }]}
       contentContainerStyle={[styles.contentContainer, contentContainerStyle]}
     >
       <View style={styles.inner}>
@@ -36,12 +38,13 @@ type CalcHeaderProps = {
 };
 
 export function CalcHeader({ title, subtitle }: CalcHeaderProps) {
+  const theme = useTheme();
   return (
     <View style={styles.headerContainer}>
-      <Surface style={styles.header}>
-        <View style={styles.headerGradient}>
-          <Title style={styles.headerTitle}>{title}</Title>
-          {!!subtitle && <Paragraph style={styles.headerSubtitle}>{subtitle}</Paragraph>}
+      <Surface style={[styles.header, { backgroundColor: theme.colors.surface, borderWidth: 1, borderColor: theme.colors.outline }]}>
+        <View style={[styles.headerGradient, { backgroundColor: theme.colors.surface }]}>
+          <Title style={[styles.headerTitle, { color: theme.colors.onSurface }]}>{title}</Title>
+          {!!subtitle && <Paragraph style={[styles.headerSubtitle, { color: theme.colors.onSurfaceVariant }]}>{subtitle}</Paragraph>}
         </View>
       </Surface>
     </View>
@@ -75,19 +78,16 @@ const styles = StyleSheet.create({
     shadowRadius: 12,
   },
   headerGradient: {
-    backgroundColor: 'rgba(255, 255, 255, 0.95)',
     padding: 24,
     borderRadius: 24,
   },
   headerTitle: {
     fontSize: 28,
     fontWeight: 'bold',
-    color: '#000000',
     marginBottom: 8,
   },
   headerSubtitle: {
     fontSize: 16,
-    color: '#000000',
     opacity: 0.8,
   },
 });

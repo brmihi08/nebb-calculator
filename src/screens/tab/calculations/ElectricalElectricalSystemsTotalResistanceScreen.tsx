@@ -11,6 +11,7 @@ import {
   Button,
   SegmentedButtons,
 } from 'react-native-paper';
+import { screenBackground } from '../../../theme/screenStyles';
 import { CopyableValueRow, NumericField, FormulaBlock, ResultBlock } from '../../../components/nebb';
 import { formatNumber } from '../../../utils/format';
 
@@ -155,7 +156,7 @@ const ElectricalElectricalSystemsTotalResistanceScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f0f8f0',
+    backgroundColor: screenBackground,
     padding: 16,
   },
   section: {

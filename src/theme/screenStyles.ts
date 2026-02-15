@@ -20,12 +20,22 @@ function rgba(hex: string, alpha: number): string {
 
 /**
  * Baseline visual language used across TAB & Cleanroom screens.
- * Intentionally mirrors the existing TAB layout/typography.
+ * Dark/Apple Glass theme to match app-wide dark mode.
  */
+/** Dark screen background - use for all screens to match app theme */
+export const screenBackground = '#000000';
+const darkBg = screenBackground;
+const darkSurface = 'rgba(28, 28, 30, 0.72)';
+const darkSurfaceVariant = 'rgba(44, 44, 46, 0.85)';
+const darkText = '#FFFFFF';
+const darkTextSecondary = 'rgba(255, 255, 255, 0.6)';
+const darkBorder = 'rgba(255, 255, 255, 0.15)';
+
 export const baseScreenStyles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 16,
+    backgroundColor: darkBg,
   },
   headerContainer: {
     marginBottom: 20,
@@ -41,19 +51,21 @@ export const baseScreenStyles = StyleSheet.create({
     shadowRadius: 12,
   },
   headerGradient: {
-    backgroundColor: 'rgba(255, 255, 255, 0.95)',
+    backgroundColor: darkSurface,
     padding: 24,
     borderRadius: 24,
+    borderWidth: 1,
+    borderColor: darkBorder,
   },
   headerTitle: {
     fontSize: 28,
     fontWeight: 'bold',
-    color: '#000000',
+    color: darkText,
     marginBottom: 8,
   },
   headerSubtitle: {
     fontSize: 16,
-    color: '#000000',
+    color: darkTextSecondary,
     opacity: 0.8,
   },
   section: {
@@ -62,11 +74,11 @@ export const baseScreenStyles = StyleSheet.create({
   sectionTitle: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: '#000000',
+    color: darkText,
     marginBottom: 16,
   },
   liquidCard: {
-    backgroundColor: 'rgba(255, 255, 255, 0.95)',
+    backgroundColor: darkSurfaceVariant,
     borderRadius: 20,
     elevation: 4,
     shadowColor: '#000',
@@ -74,7 +86,7 @@ export const baseScreenStyles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 8,
     borderWidth: 1,
-    borderColor: 'rgba(255, 255, 255, 0.2)',
+    borderColor: darkBorder,
   },
   cardContent: {
     padding: 20,
@@ -102,12 +114,12 @@ export function makeCalculatorStyles(accentHex: string) {
     formulaText: {
       fontSize: 18,
       fontWeight: 'bold',
-      color: '#000000',
+      color: darkText,
       marginBottom: 6,
     },
     formulaDescription: {
       fontSize: 14,
-      color: '#000000',
+      color: darkTextSecondary,
       opacity: 0.8,
     },
 
@@ -115,7 +127,7 @@ export function makeCalculatorStyles(accentHex: string) {
       marginBottom: 16,
     },
     input: {
-      backgroundColor: 'rgba(255, 255, 255, 0.8)',
+      backgroundColor: 'rgba(58, 58, 60, 0.8)',
     },
 
     buttonContainer: {
@@ -157,26 +169,26 @@ export function makeCalculatorStyles(accentHex: string) {
     },
     resultValue: {
       fontSize: 16,
-      color: '#000000',
+      color: darkText,
       marginBottom: 4,
     },
 
     noteContainer: {
-      backgroundColor: 'rgba(0,0,0,0.04)',
+      backgroundColor: 'rgba(255,255,255,0.06)',
       padding: 14,
       borderRadius: 12,
       borderWidth: 1,
-      borderColor: 'rgba(0,0,0,0.06)',
+      borderColor: darkBorder,
     },
     noteTitle: {
       fontSize: 14,
       fontWeight: 'bold',
       marginBottom: 6,
-      color: '#000000',
+      color: darkText,
     },
     noteText: {
       fontSize: 13,
-      color: '#000000',
+      color: darkTextSecondary,
       opacity: 0.75,
     },
   });

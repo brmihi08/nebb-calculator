@@ -284,7 +284,7 @@ const TABFanAffinityScreen = () => {
   ];
 
   return (
-    <ScrollView style={[styles.container, { backgroundColor: '#f0f8f0' }]}>
+    <ScrollView style={[styles.container, { backgroundColor: theme.colors.background }]}>
       <Surface style={styles.header}>
         <View style={styles.headerGradient}>
           <Title style={styles.headerTitle}>Fan Affinity Laws</Title>
